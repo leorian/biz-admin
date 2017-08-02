@@ -87,7 +87,7 @@ public class LoginRest {
 
         Map keyMap = myRedisClusterForHessian.get(BizAdminConstants.BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
         if (keyMap == null) {
-            return gson.toJson(BizAdminErrorEnum.E10018.toString());
+            return gson.toJson(BizAdminErrorEnum.E10001.toString());
         }
 
         try {
