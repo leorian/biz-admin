@@ -32,9 +32,9 @@ public class SecurityPipeLine implements PipeLineInter {
     public boolean run(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         logger.warn("SecurityPipeLine has execute ! ");
         httpServletRequest.setAttribute("html_title", WebSettingParam.HTML_TITLE);
-        httpServletRequest.setAttribute("switch_crop", WebSettingParam.CORP);
-        httpServletRequest.setAttribute("switch_department", WebSettingParam.DEPARTMENT);
-        Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "document_token");
+        httpServletRequest.setAttribute("biz_admin_crop", WebSettingParam.CORP);
+        httpServletRequest.setAttribute("biz_admin_department", WebSettingParam.DEPARTMENT);
+        Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "biz_admin_token");
         if (tokenCookie == null) {
             try {
                 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() +
@@ -47,7 +47,7 @@ public class SecurityPipeLine implements PipeLineInter {
         }
 
         String token = tokenCookie.getValue();
-        String uId = myRedisClusterForHessian.getForStr(BizAdminConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+        String uId = myRedisClusterForHessian.getForStr(BizAdminConstants.BIZ_ADMIN_CENTER_USERNAME_PREFIX + token);
         if (StringUtil.isNotBlank(uId)) {
             httpServletRequest.setAttribute("uId", uId);
             try {

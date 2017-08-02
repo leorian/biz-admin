@@ -59,7 +59,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="button button-little bg-red" href="${ctxPath}/monitor/login.htm">
+                    <a class="button button-little bg-red" href="${ctxPath}/admin/login.htm">
                         <span class="icon-power-off"></span>
                         退出登录
                     </a>
@@ -91,10 +91,10 @@
                 <li>
                     <a class="button button-little bg-red" href="javascript:void(0);">
                         <span class="icon-power-off"></span>
-                        ${switch_crop}<br/>
+                        ${biz_admin_crop}<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        ${switch_department}
+                        ${biz_admin_department}
                     </a>
                 </li>
             </ul>

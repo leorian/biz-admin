@@ -51,20 +51,20 @@ public class LoginRest {
     @POST
     @Path("generatePublicKey")
     public String generatePublicKey(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
-        if (!myRedisClusterForHessian.hasKey(BizAdminConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY)) {
+        if (!myRedisClusterForHessian.hasKey(BizAdminConstants.BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY)) {
             try {
                 KeyPair keyPair = RSAHelper.generateKeyPair();
                 Map<String, String> map = new HashMap<>();
                 map.put(BizAdminConstants.PUBLIC_KEY, RSAHelper.getKeyString(keyPair.getPublic()));
                 map.put(BizAdminConstants.PRIVATE_KEY, RSAHelper.getKeyString(keyPair.getPrivate()));
-                myRedisClusterForHessian.put(BizAdminConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, map);
+                myRedisClusterForHessian.put(BizAdminConstants.BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY, map);
             } catch (Throwable e) {
                 e.printStackTrace();
                 logger.error(e.getMessage());
             }
         }
 
-        Map keyMap = myRedisClusterForHessian.get(BizAdminConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
+        Map keyMap = myRedisClusterForHessian.get(BizAdminConstants.BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
 
         return ResultMessageBuilder.build(keyMap.get(BizAdminConstants.PUBLIC_KEY)).toJSONString();
     }
@@ -85,7 +85,7 @@ public class LoginRest {
             return gson.toJson(ConfigCenterLoginCodeEnum.LOGIN_FAIL_NO_PASSWORD.toString());
         }
 
-        Map keyMap = myRedisClusterForHessian.get(BizAdminConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
+        Map keyMap = myRedisClusterForHessian.get(BizAdminConstants.BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
         if (keyMap == null) {
             return gson.toJson(BizAdminErrorEnum.E10018.toString());
         }
@@ -111,9 +111,9 @@ public class LoginRest {
             String token = MD5.sign(userName + password);
             int expireTimeSecond = 2 * 60 * 60;
             long expireTimeMilSecond = expireTimeSecond * 1000;
-            myRedisClusterForHessian.putForStr(BizAdminConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token,
+            myRedisClusterForHessian.putForStr(BizAdminConstants.BIZ_ADMIN_CENTER_USERNAME_PREFIX + token,
                     userName, expireTimeMilSecond);
-            Cookie cookie = new Cookie("document_token", token);
+            Cookie cookie = new Cookie("biz_admin_token", token);
             cookie.setMaxAge(expireTimeSecond);
             cookie.setPath("/");
             EWebServletContext.getEWebContext().getResponse().addCookie(cookie);

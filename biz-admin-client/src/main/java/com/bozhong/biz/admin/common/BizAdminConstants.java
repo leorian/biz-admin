@@ -7,10 +7,10 @@ public class BizAdminConstants {
     /**
      * 公钥 秘钥
      */
-    public static final String DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY = "DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY";
+    public static final String BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY = "BIZ_ADMIN_CENTER_PUBLIC_PRIVATE_KEY";
     public static final String PUBLIC_KEY = "PUBLIC_KEY";
     public static final String PRIVATE_KEY = "PRIVATE_KEY";
 
-    public static final String DOCUMENT_CENTER_USERNAME_PREFIX = "DOCUMENT_CENTER_USERNAME_PREFIX_";
+    public static final String BIZ_ADMIN_CENTER_USERNAME_PREFIX = "BIZ_ADMIN_CENTER_USERNAME_PREFIX_";
 
 }

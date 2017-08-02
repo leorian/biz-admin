@@ -25,19 +25,19 @@ public class Login implements ScreenInter {
     @Override
     public void excute(EWebContext eWebContext) {
         eWebContext.put("html_title", WebSettingParam.HTML_TITLE);
-        eWebContext.put("switch_crop", WebSettingParam.CORP);
-        eWebContext.put("switch_department", WebSettingParam.DEPARTMENT);
+        eWebContext.put("biz_admin_crop", WebSettingParam.CORP);
+        eWebContext.put("biz_admin_department", WebSettingParam.DEPARTMENT);
         System.out.println("Login当前线程：" + Thread.currentThread().getName());
         HttpServletRequest request = eWebContext.getRequest();
         HttpServletResponse response = eWebContext.getResponse();
-        Cookie tokenCookie = CookiesUtil.getCookieByName(request, "switch_token");
+        Cookie tokenCookie = CookiesUtil.getCookieByName(request, "biz_admin_token");
         if (tokenCookie != null) {
             String token = tokenCookie.getValue();
-            tokenCookie = new Cookie("switch_token", null);
+            tokenCookie = new Cookie("biz_admin_token", null);
             tokenCookie.setPath("/");
             tokenCookie.setMaxAge(0);
             response.addCookie(tokenCookie);
-            myRedisClusterForHessian.delForStr(BizAdminConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+            myRedisClusterForHessian.delForStr(BizAdminConstants.BIZ_ADMIN_CENTER_USERNAME_PREFIX + token);
         }
 
     }
