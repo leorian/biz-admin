@@ -12,7 +12,7 @@
         <property name="appId" value="25"/>
     </bean>
 
-    <bean class="com.bozhong.insistapi.common.SwitchLoad" init-method="init">
+    <bean class="com.bozhong.biz.admin.common.SwitchLoad" init-method="init">
         <property name="appId" value="25"/>
         <property name="zkHosts" value="${switch.zkHosts}"/>
     </bean>
@@ -27,7 +27,7 @@
     <bean id="unifiedLogAdvisorPointCut" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
         <property name="patterns">
             <list>
-                <value>com.bozhong.insistapi.service.*</value>  <!-- 业务实现方法名匹配 -->
+                <value>com.bozhong.biz.admin.service.*</value>  <!-- 业务实现方法名匹配 -->
             </list>
         </property>
         <property name="advice">
@@ -36,7 +36,7 @@
     </bean>
 
     <bean id="unifiedLogAdvisor" class="com.bozhong.unifiedLog.advisor.UnifiedLogAdvisor">
-        <property name="localAppName" value="document-web"/>
+        <property name="localAppName" value="biz-admin-web"/>
         <property name="maxFileSize" value="14"/>
     </bean>
 
@@ -45,5 +45,5 @@
     <import resource="config/spring/dao-config-spring.xml"/>
     <import resource="config/spring/service-config-spring.xml"/>
 
-    <context:component-scan base-package="com.bozhong.insistapi.restful,com.bozhong.insistapi.view.*"/>
+    <context:component-scan base-package="com.bozhong.biz.admin.restful,com.bozhong.biz.admin.view.*"/>
 </beans>

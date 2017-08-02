@@ -32,7 +32,7 @@
         <constructor-arg value="myredis"/>
     </bean>
 
-    <bean class="com.bozhong.insistapi.task.RedisUtil">
+    <bean class="com.bozhong.biz.admin.task.RedisUtil">
         <property name="myRedisClusterForHessian" ref="myRedisClusterForHessian"/>
     </bean>
 

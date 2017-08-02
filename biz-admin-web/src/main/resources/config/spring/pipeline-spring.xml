@@ -5,6 +5,6 @@
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
        default-autowire="byName">
 
-    <bean id="securityPipeLine" class="com.bozhong.insistapi.pipeline.SecurityPipeLine"/>
+    <bean id="securityPipeLine" class="com.bozhong.biz.admin.pipeline.SecurityPipeLine"/>
 
 </beans>

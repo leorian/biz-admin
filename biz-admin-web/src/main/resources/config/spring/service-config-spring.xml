@@ -3,5 +3,5 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd" default-autowire="byName">
-    <bean id="mongoService" class="com.bozhong.insistapi.service.impl.MongoServiceImpl"/>
+    <bean id="mongoService" class="com.bozhong.biz.admin.service.impl.MongoServiceImpl"/>
 </beans>
