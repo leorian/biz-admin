@@ -3,10 +3,10 @@ package com.bozhong.biz.admin.pipeline;
 import com.bozhong.common.util.CollectionUtil;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.config.util.CookiesUtil;
-import com.bozhong.biz.admin.common.DocumentConstants;
+import com.bozhong.biz.admin.common.BizAdminConstants;
 import com.bozhong.biz.admin.common.WebSettingParam;
 import com.bozhong.biz.admin.entity.AppDO;
-import com.bozhong.biz.admin.task.DocHttpUtil;
+import com.bozhong.biz.admin.task.BizAdminHttpUtil;
 import com.bozhong.myredis.MyRedisClusterForHessian;
 import com.yx.eweb.main.PipeLineInter;
 import org.apache.log4j.Logger;
@@ -47,11 +47,11 @@ public class SecurityPipeLine implements PipeLineInter {
         }
 
         String token = tokenCookie.getValue();
-        String uId = myRedisClusterForHessian.getForStr(DocumentConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+        String uId = myRedisClusterForHessian.getForStr(BizAdminConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
         if (StringUtil.isNotBlank(uId)) {
             httpServletRequest.setAttribute("uId", uId);
             try {
-                List<AppDO> appDOList = DocHttpUtil.getAppDOList(uId);
+                List<AppDO> appDOList = BizAdminHttpUtil.getAppDOList(uId);
                 httpServletRequest.setAttribute("appDOList", appDOList);
                 Map<String, String> appDOMap = new HashMap<>();
                 if (!CollectionUtil.isEmpty(appDOList)) {

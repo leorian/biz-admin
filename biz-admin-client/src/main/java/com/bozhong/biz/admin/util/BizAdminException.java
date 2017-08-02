@@ -3,45 +3,45 @@ package com.bozhong.biz.admin.util;
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
-public class DocumentException extends RuntimeException {
+public class BizAdminException extends RuntimeException {
     private String errorCode;
 
     private String errorMessage;
 
     private String detailErrorMessage;
 
-    public DocumentException(String errorCode, String errorMessage, String detailErrorMessage, Throwable e) {
+    public BizAdminException(String errorCode, String errorMessage, String detailErrorMessage, Throwable e) {
         super(errorCode, e);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
         this.detailErrorMessage = detailErrorMessage;
     }
 
-    public DocumentException(String errorCode, String errorMessage, String detailErrorMessage) {
+    public BizAdminException(String errorCode, String errorMessage, String detailErrorMessage) {
         super(errorCode);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
         this.detailErrorMessage = detailErrorMessage;
     }
 
-    public DocumentException(String errorCode, String errorMessage, Throwable e) {
+    public BizAdminException(String errorCode, String errorMessage, Throwable e) {
         super(errorCode, e);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
 
-    public DocumentException(String errorCode, String errorMessage) {
+    public BizAdminException(String errorCode, String errorMessage) {
         super(errorCode);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
 
-    public DocumentException(String errorCode, Throwable e) {
+    public BizAdminException(String errorCode, Throwable e) {
         super(errorCode, e);
         this.errorCode = errorCode;
     }
 
-    public DocumentException(String errorCode) {
+    public BizAdminException(String errorCode) {
         super(errorCode);
         this.errorCode = errorCode;
     }

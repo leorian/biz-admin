@@ -3,7 +3,7 @@ package com.bozhong.biz.admin.common;
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
-public class DocumentConstants {
+public class BizAdminConstants {
     /**
      * 公钥 秘钥
      */

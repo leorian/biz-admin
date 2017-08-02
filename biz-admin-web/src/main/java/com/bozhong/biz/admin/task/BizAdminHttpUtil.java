@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by xiezhonggui on 2017/5/4.
  */
-public class DocHttpUtil {
+public class BizAdminHttpUtil {
 
     /**
      * 从配置中心获取用户的应用ID

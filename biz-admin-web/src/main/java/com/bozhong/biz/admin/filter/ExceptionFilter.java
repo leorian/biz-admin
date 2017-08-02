@@ -2,8 +2,8 @@ package com.bozhong.biz.admin.filter;
 
 
 import com.bozhong.common.util.ResultMessageBuilder;
-import com.bozhong.biz.admin.common.DocumentLogger;
-import com.bozhong.biz.admin.util.DocumentException;
+import com.bozhong.biz.admin.common.BizAdminLogger;
+import com.bozhong.biz.admin.util.BizAdminException;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +23,12 @@ public class ExceptionFilter implements Filter {
         try {
             chain.doFilter(sReq, sRes);
         } catch (Exception e) {
-            DocumentLogger.getSysLogger().error(e.getMessage());
-            if (e instanceof DocumentException) {
-                DocumentException documentException = (DocumentException) e;
+            BizAdminLogger.getSysLogger().error(e.getMessage());
+            if (e instanceof BizAdminException) {
+                BizAdminException bizAdminException = (BizAdminException) e;
                 PrintWriter writer = response.getWriter();
                 writer.write(ResultMessageBuilder.build(false,
-                        documentException.getErrorCode(), documentException.getErrorMessage()).toJSONString());
+                        bizAdminException.getErrorCode(), bizAdminException.getErrorMessage()).toJSONString());
             }
 
         }
